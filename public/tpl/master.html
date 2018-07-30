@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Blog Post - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/public/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="/public/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/public/css/jquery-ui.min.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel='stylesheet' type='text/css'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/emojione/1.5.0/assets/sprites/emojione.sprites.css" rel="stylesheet" type="text/css">
+  <link href="/public/css/emojionearea.css" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template -->
+  <link href="/public/css/custom.css?{{ date().timestamp }}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fun-green fixed-top">
+    <div class="container">
+      <a class="navbar-brand main-badge" href="/">
+        <img src="/public/img/logo.png" title="funny logo" class="img-badge" width="100"> 
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          {% if User is empty %}
+          <li class="nav-item">
+            <a class="nav-link" href="/signin">Create User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Log In</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <img class="rounded-circle avt-icon" src="/imgwh/{{ User.user_data.Avatar }}/30/30">
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin">{{ User.user }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Log Out</a>
+          </li>
+          {% endif %}
+          <!-- <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; prdacinac2.com {{ "now"|date("Y") }}</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/public/js/jquery.min.js"></script>
+  <script src="/public/js/jquery-ui.min.js"></script>
+  <script src="/public/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/emojione/1.5.0/lib/js/emojione.min.js"></script>
+  <script src="/public/js/emojionearea.js"></script>
+
+  <script src="/public/js/custom.js"></script> {% block footer %}{% endblock %}
+
+</body>
+
+</html>

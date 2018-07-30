@@ -1,0 +1,45 @@
+{% extends "index.html" %} {% block content %}
+<hr>
+<div class="row" id="main_ask">
+    <div class="col-md-6">
+        <form action="/ask/save" method="POST" id="form_ask_save">
+            <div class="form-group">
+                <input type="text" class="form-control" id="Title" placeholder="Enter title" name="Title" value="{% if edit.Title is defined %}{{edit.Title}}{% endif %}" >
+                <small id="titleHelp" class="form-text text-muted">Search for title</small>
+                {% if edit.id is defined %}
+                    <input type="hidden" name="id" value="{{edit.id}}" >              
+                {% endif %}            
+            </div>
+            <div class="form-group">
+                <textarea name="Content" id="Content" class="form-control" placeholder="Content">{% if edit.Content is defined %}{{edit.Content}}{% endif %}</textarea>
+            </div>
+            {% if edit is empty %}
+            <button id="search" class="btn btn-primary">Search</button>
+            <button id="save" class="btn btn-primary">Save</button>
+            {% else %}
+            <button id="update_edit" class="btn btn-primary">Save</button>
+            {% endif %}
+        </form>
+
+        {% if edit.id is not defined %}
+        <div id="results2005"></div>
+        {% endif %}
+
+    </div>
+    <div class="col-md-6">
+        <div id="dropUploadMulti">
+            <p id="dropUploadMultiPlaceholder">Drop images here</p>
+        </div>
+        <div id="uploadedImagesErr">
+        </div>
+        <div id="uploadedImages">
+            {% if edit.Img is not empty %}
+                {% for img in edit.Img %}
+                    <div class="upFinish" data-img="{{ img }}"><img class="has-loaded" src="/img/{{ img }}/100"><span class="rm_ask_img fa fa-remove"></span></div>
+                {% endfor %}               
+            {% endif %}
+        </div>
+
+    </div>
+    {% endblock %} {% block footer %}
+    <script src="/public/js/ask/ask.js?{{ date().timestamp }}"></script> {% endblock %}

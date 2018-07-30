@@ -1,0 +1,46 @@
+{% extends "master_admin.html" %} {% block content %}
+<div class="container">
+
+    <div class="row">
+        <h2>My Posts</h2>
+        <div class="col-lg-12">
+            <div class="form-group">
+                <button id="NewPost" class="btn btn-primary">+ Add Post</button>
+            </div>
+            {% if myPosts is not empty %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Desc</th>
+                        <th scope="col">Active</th>
+                        <th scope="col">Created</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for p in myPosts %}
+                    <tr>
+                        <td width="200px">{{ p.Title }}</td>
+                        <td><div class="hideMoreDesc">{{ p.Desc  }}</div></td>
+                        <td>{{ p.Display }}</td>
+                        <td>{{ p.CreatedAt|date("d/m/Y") }}</td>
+                        <td>
+                            <i class="open-edit fa fa-fw fa-edit fasize-3" data-id="{{ p.ID }}"></i>
+                        </td>
+                        <td>
+                            <i class="remove-item fa fa-fw  fa-remove fasize-3" data-id="{{ p.ID }}"></i>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock %} {% block footer %}
+<script src="/public/js/fun/admin_posts.js?{{ date().timestamp }}"></script> {% endblock %}

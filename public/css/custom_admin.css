@@ -1,0 +1,140 @@
+body {
+    padding-top: 54px;
+}
+  
+@media (min-width: 992px) {
+    body {
+      padding-top: 56px;
+    }
+}
+.fun-green{
+    background-color: #8b968d;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #2f2f2f;
+    border-color: #000000;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #2f2f2f;
+    border-color: #000000;
+}
+  
+.btn-primary:hover {
+    color: #fff;
+    background-color: #101010;
+    border-color: #000000;
+}
+
+.nav-link {
+    color: #303631 !important;
+}
+
+a.nav-link:hover{
+    color: #545f56 !important;
+}
+.navbar-brand{
+    color: #303631 !important;
+}
+h2{
+    margin: 10px 0;
+    font-size: 22px;
+    color: #303631 !important;
+}
+.nav-item .active{
+    color: #fff !important;
+}
+#dropUploadMulti{
+    position: relative;
+    border: 1px dashed black ;
+    min-height: 250px;
+    width: 100%;
+}
+#uploadedImages{
+    width: 100%;
+}
+
+.upOutside{
+    width: 100%;
+    height: 25px;
+    background-color: white;
+    margin-bottom: 7px;
+}
+
+.upInside{
+    width: 0;
+    height: 25px;
+    background-color: #8b968d;
+    text-align: right;
+}
+
+.upFinish{
+    position: relative;
+    margin: 15px;
+    padding: 5px;
+    border: 1px dashed black ;
+    display: inline-block;
+}
+.rm_ask_img{
+    position: absolute;
+    top: -13px;
+    right: -10px;
+    color: red;
+    cursor: pointer;
+}
+.sm_img_panel{
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    background-color: #d6dbd8;
+    width: 100px;
+    height: 50px;
+    opacity: 0.9;
+    filter: alpha(opacity=90); 
+}
+#uploadedImagesErr p{
+    color: rgb(250, 135, 135);
+    padding-top: 5px;
+}
+.img-loader{
+    display: inline-block;
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    background-image: url("/public/img/ajax-loader.gif");
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+.cm10{
+    margin-bottom: 10px;
+}
+.help-block{
+    color: red;
+    font-size: 10px;
+    font-weight: lighter;
+}
+.has-error input{
+    border-color: red;
+}
+#dropImage{
+    width: 100%;
+    height: 250px;
+    border: 2px dotted rgb(11, 133, 161); 
+    background-color: white;
+}
+#dropImage h2 {
+    font-size: 16px;
+    padding: 25px 0 0 50px;
+}
+.ptop1{
+    padding-top: 40px;
+}
+.fasize-3{
+    font-size: 25px;
+    cursor: pointer;
+}
+.hideMoreDesc{
+    max-height: 50px;
+    overflow: scroll;
+}

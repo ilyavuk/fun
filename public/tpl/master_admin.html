@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content=""> {% if userg.logged is not empty %}
+  <title> {% if title is not empty %} {{title }}{%else%} Admin Panel {%endif%}</title>
+  {% else %}
+  <title> {% if front_end is empty %} {% if title is not empty %} {{title }}{%else%} Admin Panel {%endif%} {%else%} Please login {% endif %}</title>
+  {% endif %}
+
+  <!-- Bootstrap core CSS -->
+  <link href="/public/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/public/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="/public/css/custom_admin.css?{{ date().timestamp }}" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark fun-green fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/{{ navLink }}"> {% if userg.logged is not empty %} <img id="avicon" src="/imgwh/{{ userg.user_data.Avatar }}/30/30" class="img-fluid rounded" alt="Responsive image"> {% else %} {% if front_end is empty %} {% if title is not empty %} {{title }}{%else%} Admin Panel {%endif%} {% else %} Please login {% endif %} {% endif %}
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      {% if userg.logged is not empty %}
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="/admin" class="nav-link {% if activeNav == 'personal_data' %} active {% endif %}">User Personal Data</a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/my_posts" class="nav-link {% if activeNav == 'posts' %} active {% endif %}">My Posts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/Logout">LogOut</a>
+          </li>
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+  </nav>
+
+
+  <!-- Page Content -->
+  <div class="container">
+
+
+
+    {% block content %}{% endblock %}
+
+
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <!-- <footer class="py-5 fun-green fixed-bottom">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+      </div>
+    </footer> -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/public/js/jquery.min.js"></script>
+  <script src="/public/js/jquery-ui.min.js"></script>
+  <script src="/public/js/bootstrap.bundle.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+  
+  <script src="/public/js/custom.js"></script> {% block footer %}{% endblock %}
+</body>
+
+</html>

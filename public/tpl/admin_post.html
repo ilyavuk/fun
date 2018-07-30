@@ -1,0 +1,66 @@
+{% extends "master_admin.html" %} {% block content %}
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-8">
+            <h2>Create Post</h2>
+            <div id="dropImage" class="dropUploadMulti">
+                <h2>Drop Images Here</h2>
+            </div>
+        </div>
+
+        <div class="col-lg-4 ptop1">
+            <form>
+                <div class="form-group">
+                    <label for="singleUpload">Simple Upload</label>
+                    <input type="file" class="form-control-file" id="singleUpload">
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-12 uploadedImages">
+            {% if Action == 'edit' %} {% for img in PostData.Img %}
+            <div class="upFinish" data-img="{{ img.path }}">
+                <img class="has-loaded" src="/img/{{ img.path }}/100">
+                <span class="rm_ask_img fa fa-remove"></span>
+                <div class="sm_img_panel">
+                    <div class="form-check">
+                        <input class="form-check-input displayCh" value="" type="checkbox" {% if img.display==1 %}checked{% endif %}>
+                        <label class="form-check-label" for="defaultCheck1">Display</label>
+                    </div>
+                </div>
+            </div>
+            {% endfor %} {% endif %}
+        </div>
+    </div>
+    <div class="row ptop1">
+        <div class="col-lg-8">
+            <form id="create_post">
+                <div class="form-group">
+                    {% if Action == 'edit' %}
+                    <input type="hidden" name="UpdateID" value="{{ PostData.ID }}"> {%endif%}
+                    <input type="text" class="form-control" name="Title" placeholder="Title" value="{% if Action == 'edit' %}{{ PostData.Title }}{%endif%}">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="Url" placeholder="Friendly Url" value="">
+                </div>
+                <div class="form-group">
+                    <textarea class="desctext" name="Desc">{% if Action == 'edit' %}{{ PostData.Desc }}{%endif%}</textarea>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" value="1" type="checkbox" name="PostVisible" id="PostVisible" {% if PostData.Display == 1 %} checked  {% endif %}>
+                    <label class="form-check-label" for="PostVisible">Is Visible</label>
+                </div>
+                <br>
+                <div class="form-group">
+                    <button id="SavePost" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %} {% block footer %}
+<script src="/public/js/fun/admin_posts.js?{{ date().timestamp }}"></script> {% endblock %}

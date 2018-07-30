@@ -1,0 +1,141 @@
+{% extends "master.html" %} {% block content %}
+<div class="row">
+
+    <!-- Post Content Column -->
+    <div class="col-lg-8">
+        
+        <hr><hr>
+
+        {% for post in Posts %}
+        <!-- Title -->
+        <h1 class="mt-4"><a href="/{{ post.Url }}">{{ post.Title }}</a></h1>
+
+        <!-- Author -->
+        <p class="lead">           
+            <p>Postavljeno {{ post.FormatedDate }} - by {{ post.Email }}</p>
+        </p>
+
+        <hr>
+
+        <!-- Preview Image -->
+        {% for img in post.Img%}
+        <picture class="img-sml">
+            <img class="img-fluid img-thumbnail" src="/img/{{ img.path }}/350" alt="">
+        </picture>
+        {% endfor %}
+        <hr>
+
+        <!-- Post Content -->
+        <div class="Content">
+            {{ post.Desc | raw }}
+        </div>
+
+        <hr>
+
+
+    
+        {% for Comment in attribute(Comments, post.ID) %}
+        <div class="media mb-4">
+            <img class="d-flex mr-3 rounded-circle" src="{% if Comment.Avatar is empty %}http://placehold.it/50x50{% else %}/imgwh/{{ Comment.Avatar }}/50/50{% endif %}" alt="">
+            <div class="media-body">
+                <h5 class="mt-0">{% if Comment.Email is empty %} Unknown {% else %}{{Comment.Email}}{% endif %}</h5>
+                {{ Comment.Content }}   
+                <div class="postTime">{{ Comment.FormatedDate }}</div>          
+            </div>            
+        </div>
+        {% endfor %}
+
+        {% if DisplayCommentForm is not empty %}
+
+        {% if NumOfComments > 10 %}
+        <a href="" class="showMoreComments">Prikazi Jos Komentara</a>
+        {% endif %}
+
+        <!-- Comments Form -->
+        <div class="card my-4">
+            <h5 class="card-header">Ostavi komentar:</h5>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <textarea class="form-control emojioneAreas comment_field" rows="3" data-id="{{ post.ID }}">&nbsp;</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary saveComment">Snimi</button>
+                </form>
+            </div>
+        </div>
+        {% else %}
+        <div class="ReadMore">
+            <a href="/{{ post.Url }}" title="Saznaj Vise" >Saznaj Vise >></a>
+        </div>
+        {% endif %}
+
+        
+
+
+        {% endfor %}
+    </div>
+
+    <!-- Sidebar Widgets Column -->
+    <div class="col-md-4">
+
+        <!-- Search Widget -->
+        <div class="card my-4">
+            <h5 class="card-header">Search</h5>
+            <div class="card-body">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categories Widget -->
+        <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#">Web Design</a>
+                            </li>
+                            <li>
+                                <a href="#">HTML</a>
+                            </li>
+                            <li>
+                                <a href="#">Freebies</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="#">JavaScript</a>
+                            </li>
+                            <li>
+                                <a href="#">CSS</a>
+                            </li>
+                            <li>
+                                <a href="#">Tutorials</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Side Widget -->
+        <div class="card my-4">
+            <h5 class="card-header">Side Widget</h5>
+            <div class="card-body">
+                You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}{% block footer %}
+<script src="/public/js/fun/post.js?{{ date().timestamp }}"></script> {% endblock %}

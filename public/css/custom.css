@@ -1,0 +1,137 @@
+body {
+    padding-top: 54px;
+}
+  
+@media (min-width: 992px) {
+    body {
+      padding-top: 56px;
+    }
+}
+.container-fluid h1{
+    color:  #475c4a;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#dropUploadMulti{
+    position: relative;
+    border: 1px dashed black ;
+    min-height: 250px;
+    width: 100%;
+}
+#uploadedImages{
+    width: 100%;
+}
+
+.upOutside{
+    width: 100%;
+    height: 25px;
+    background-color: white;
+    margin-bottom: 7px;
+}
+
+.upInside{
+    width: 0;
+    height: 25px;
+    background-color: #8b968d;
+    text-align: right;
+}
+
+.upFinish{
+    position: relative;
+    margin: 15px;
+    padding: 5px;
+    border: 1px dashed black ;
+    display: inline-block;
+}
+.rm_ask_img{
+    position: absolute;
+    top: -13px;
+    right: -10px;
+    color: red;
+    cursor: pointer;
+}
+#uploadedImagesErr p{
+    color: rgb(250, 135, 135);
+    padding-top: 5px;
+}
+.img-loader{
+    display: inline-block;
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    background-image: url("/public/img/ajax-loader.gif");
+    background-repeat: no-repeat;
+    background-position: center; 
+}
+#results2005{
+    margin-top: 200px;
+}
+.row.no-pad {
+    margin-right:0;
+    margin-left:0;
+}
+.row.no-pad > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+.img-sml{
+    position: relative;
+}
+.bigger-img{
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    z-index: 3;
+}
+.fasize-3{
+    font-size: 18px;
+    cursor: pointer;
+    display: block;
+}
+.fun-green{
+    background-color: #8b968d;
+}
+.main-avatar{
+    border-radius: 50%;
+}
+.avt-icon{
+    padding: 5px;
+}
+.main-badge{
+    position: relative;
+}
+.img-badge{
+    position: absolute;
+    top: -18px;
+    left: 0px;
+}
+.postTime{
+    font-weight: lighter;
+    font-size: 12px;
+    padding-top: 5px;
+    text-align: right;
+}
+.ReadMore{
+    font-size: 1.2rem;
+    padding-bottom: 25px;
+}
+a, a:active{
+    color: #242825;
+}
+a:hover{
+    color: #242825;
+}
+h1{
+    font-size: 2rem;
+}
+.lead {
+    font-size: 1rem;
+    font-weight: lighter;
+}
+.showMoreComments{
+    text-decoration: underline;
+}
+
+
